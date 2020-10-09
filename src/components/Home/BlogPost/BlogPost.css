@@ -1,0 +1,35 @@
+.blog-green{
+    background-image: url(../../../images/Mask\ Group\ 7.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 200px;
+    position: relative;
+    z-index: 1;
+    color: white !important;
+}
+
+.blog-green::before{
+    content: ' ';
+    display: block;
+    width: 96.5%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    background: linear-gradient(to right,  #19d3ae 0%,#0fcfec 100%);
+    opacity: 0.7;
+    z-index: -10;
+}
+
+.author-img img{
+    height: 55px;
+}
+
+.author-deatil :first-child{
+    margin-bottom: 0;
+    padding: 0;
+    font-weight: 700;
+}
+
+.author-deatil :last-child{
+    color: gray
+}

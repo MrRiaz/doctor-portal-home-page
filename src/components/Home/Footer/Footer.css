@@ -1,0 +1,27 @@
+.footer-area{
+    background-image: url(../../../images/Group\ 26.png);
+    background-size: cover;
+}
+
+.footer-area li{
+    padding-bottom: 10px;
+}
+
+.social-media .icon{
+    height: 30px;
+    width: 30px;
+    color: #1cc7c1;
+    border-radius: 50%;
+    border: 1px solid #6ACECE;
+    padding: 5px;
+}
+
+.social-media .icon:hover{
+    color: #fff;
+    background-color: #1cc7c1;
+}
+
+.social-media .active-icon{
+    background-color: #6ACECE ;
+    color:white;
+}
