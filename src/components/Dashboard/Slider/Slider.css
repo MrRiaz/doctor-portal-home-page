@@ -1,0 +1,17 @@
+.slider{
+    height: 100vh;
+    background: linear-gradient(to bottom,  #18d2af 1%,#0fcfe9 100%);
+    position: fixed;
+}
+
+.slider li{
+    margin-bottom: 25px;
+}
+
+.slider li:focus{
+    outline: none;
+}
+
+.slider li span{
+    color: white;
+}
