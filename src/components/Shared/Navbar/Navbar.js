@@ -26,7 +26,7 @@ const Navbar = () => {
                         <Link className={`nav-link mr-5 ${window.location.pathname === '/appointment' ? 'text-secondary' : 'text-white'}`} to="/dashboard/appointment">Blog</Link>
                     </li>
                     <li class="nav-item">
-                        <Link className={`nav-link mr-5 ${window.location.pathname === '/appointment' ? 'text-secondary' : 'text-white'}`} to="/appointment">Contact Us</Link>
+                        <Link className={`nav-link mr-5 ${window.location.pathname === '/appointment' ? 'text-secondary' : 'text-white'}`} to="/login">Contact Us</Link>
                     </li>
                 </ul>
             </div>

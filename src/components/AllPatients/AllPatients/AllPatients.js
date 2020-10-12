@@ -1,12 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../../../App';
 import Slider from '../../Dashboard/Slider/Slider';
 import PatientsData from '../PatientsData/PatientsData';
 
 const AllPatients = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [patients, setPatients] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/allPatients')
+        // fetch('http://localhost:5000/allPatients')
+        fetch('http://localhost:5000/allPatients?email='+loggedInUser.email, {
+            method: 'GET',
+            headers: { 
+                'content-type' : 'application/json', 
+                authorization: `Bearer ${sessionStorage.getItem('token')}`
+            }
+        })
         .then(res => res.json())
         .then(data => setPatients(data))
         .catch(error => console.log(error));

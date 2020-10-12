@@ -27,7 +27,7 @@ const Slider = () => {
                     <Link to="/doctor/setting"> <FontAwesomeIcon className="text-white mr-3" icon={faCog} /> <span>Setting</span></Link>
                 </li>
             </ul>
-            <Link to="/"><FontAwesomeIcon className="text-white mr-3" icon={faSignOutAlt} /> <span className="text-white">Log Out</span></Link>
+            <Link to="/login"><FontAwesomeIcon className="text-white mr-3" icon={faSignOutAlt} /> <span className="text-white">Log Out</span></Link>
         </section>
     );
 };

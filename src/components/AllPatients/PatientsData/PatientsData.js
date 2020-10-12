@@ -14,6 +14,7 @@ const PatientsData = ({patients}) => {
                         <th className="text-secondary" scope="col">Weight</th>
                         <th className="text-secondary" scope="col">Contact</th>
                         <th className="text-secondary" scope="col">Service</th>
+                        <th className="text-secondary" scope="col">Date</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -22,11 +23,12 @@ const PatientsData = ({patients}) => {
                             <tr>
                                 <td>{index + 1}</td>
                                 <td>{patient.name}</td>
-                                <td> {patient.gender} </td>
+                                <td>{patient.gender} </td>
                                 <td>{patient.age}</td>
                                 <td>{patient.weight}kg</td>
                                 <td>{patient.phone}</td>
                                 <td>{patient.service}</td>
+                                <td>{(new Date(patient.date).toDateString())}</td>
                             </tr>
                         )
                     }
