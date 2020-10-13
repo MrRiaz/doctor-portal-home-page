@@ -2,7 +2,6 @@ import React from 'react';
 import AppointmentShortList from '../AppointmentShortList/AppointmentShortList';
 
 const AppointmentsByDate = ({appointments}) => {
-    console.log(appointments);
     return (
         <div className="pt-3">
             <div className="d-flex justify-content-between">

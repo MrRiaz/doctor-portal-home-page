@@ -14,16 +14,16 @@ const Navbar = () => {
                         <Link className="nav-link mr-5" to="/home">Home <span class="sr-only">(current)</span></Link>
                     </li>
                     <li class="nav-item">
-                        <Link className="nav-link mr-5" to="/about">About</Link>
+                        <Link className="nav-link mr-5" to="/appointment">Patient</Link>
                     </li>
                     <li class="nav-item">
-                        <Link className="nav-link mr-5" to="/appointment">Dental Services</Link>
+                        <Link className="nav-link mr-5" to="/dashboard">Dashboard</Link>
                     </li>
                     <li class="nav-item">
-                        <Link className={`nav-link mr-5 ${window.location.pathname === '/appointment' ? 'text-secondary' : 'text-white'}`} to="/appointment">Review</Link>
+                        <Link className={`nav-link mr-5 ${window.location.pathname === '/appointment' ? 'text-secondary' : 'text-white'}`} to="/appointment">Admin</Link>
                     </li>
                     <li class="nav-item">
-                        <Link className={`nav-link mr-5 ${window.location.pathname === '/appointment' ? 'text-secondary' : 'text-white'}`} to="/dashboard/appointment">Blog</Link>
+                        <Link className={`nav-link mr-5 ${window.location.pathname === '/appointment' ? 'text-secondary' : 'text-white'}`} to="/blog">Blog</Link>
                     </li>
                     <li class="nav-item">
                         <Link className={`nav-link mr-5 ${window.location.pathname === '/appointment' ? 'text-secondary' : 'text-white'}`} to="/login">Contact Us</Link>

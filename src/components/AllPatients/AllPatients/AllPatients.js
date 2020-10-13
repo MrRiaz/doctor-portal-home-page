@@ -8,31 +8,38 @@ const AllPatients = () => {
     const [patients, setPatients] = useState([]);
 
     useEffect(() => {
-        // fetch('http://localhost:5000/allPatients')
-        fetch('http://localhost:5000/allPatients?email='+loggedInUser.email, {
-            method: 'GET',
-            headers: { 
-                'content-type' : 'application/json', 
-                authorization: `Bearer ${sessionStorage.getItem('token')}`
-            }
-        })
+        // fetch('http://localhost:5000/allPatients?email='+loggedInUser.email, {
+        //     method: 'GET',
+        //     headers: { 
+        //         'content-type' : 'application/json', 
+        //         authorization: `Bearer ${sessionStorage.getItem('token')}`
+        //     }
+        // })
+
+        fetch('http://localhost:5000/allPatients')
         .then(res => res.json())
-        .then(data => setPatients(data))
+        .then(data => {
+            setPatients(data);
+            console.log(data);
+        })
         .catch(error => console.log(error));
     }, [])
 
     const style={
         backgroundColor: "#F4FDFB",
-        marginLeft: '15px'
+        marginLeft: '15px',
+        position: 'absolute',
+        right: 0
     }
 
     return (
         <div className="container-fluid row">
-            <div className="col-md-2">
+            {/* <div className="col-md-2">
                 <Slider></Slider>
-            </div>
-            <div className="col-md-10 p-4 pr-5">
-                <div style={style}>
+            </div> */}
+            <Slider />
+            <div className="col-md-10 p-4 pr-5" style={style}>
+                <div>
                     <h6>Patients</h6>
                     <PatientsData patients={patients}></PatientsData>
                 </div>

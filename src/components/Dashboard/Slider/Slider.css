@@ -6,10 +6,12 @@
 
 .slider li{
     margin-bottom: 25px;
+    transition: 0.3s;
 }
 
-.slider li:focus{
-    outline: none;
+.slider li:hover span{
+    display: inline-block;
+    transform: scale(1.005);
 }
 
 .slider li span{

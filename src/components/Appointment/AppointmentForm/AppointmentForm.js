@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Modal from 'react-modal';
 import { useForm } from "react-hook-form";
+import { UserContext } from '../../../App';
 
 
 const customStyles = {
@@ -18,9 +19,11 @@ const customStyles = {
 Modal.setAppElement('#root');
 
 const AppointmentForm = ({ modalIsOpen, closeModal, appointmentOn, date }) => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const { register, handleSubmit, errors } = useForm();
-
+    
     const onSubmit = data => {
+        // const adding = {...loggedInUser, ...data};
         data.service = appointmentOn;
         data.date = date;
         data.created = new Date();
@@ -51,7 +54,7 @@ const AppointmentForm = ({ modalIsOpen, closeModal, appointmentOn, date }) => {
                 <p className="text-secondary text-center"><small>Appointment on {date.toDateString()} </small></p>
                 <form className="px-4 pt-4" onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
-                        <input type="text" ref={register({ required: true })} name="name" placeholder="Your Name" className="form-control" />
+                        <input type="text" defaultValue={loggedInUser.name} ref={register({ required: true })} name="name" placeholder="Your Name" className="form-control" />
                         {errors.name && <span className="text-danger">This field is required</span>}
                     </div>
 
@@ -61,8 +64,8 @@ const AppointmentForm = ({ modalIsOpen, closeModal, appointmentOn, date }) => {
                     </div>
 
                     <div className="form-group">
-                        <input type="text" ref={register({ required: true })} name="email" placeholder="Email" className="form-control" />
-                        {errors.email && <span className="text-danger">This field is required</span>}
+                        <input type="text" defaultValue={loggedInUser.email} ref={register({ required: true })} name="email" placeholder="Email" className="form-control" />
+                        {errors.user_email && <span className="text-danger">This field is required</span>}
                     </div>
 
                     <div className="form-group row">
