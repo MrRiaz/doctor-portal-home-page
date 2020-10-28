@@ -11,7 +11,7 @@ const Doctor = ({doctor}) => {
                 {
                     doctor.image ? <img style={{width: '200px'}} src={`data:image/jpeg;base64,${doctor.image.img}`} alt=""/> 
                     :
-                    <img style={{width: '200px'}} src={`http://localhost:5000/${doctor.img}`} alt=""/>
+                    <img style={{width: '200px'}} src={`https://frozen-spire-66632.herokuapp.com/${doctor.img}`} alt=""/>
                 }
                 <h6 style={{fontWeight: '700', marginTop: '7px'}}> {doctor.name} </h6>
                 <p className="text-secondary"><FontAwesomeIcon className="phone-icon" icon={faPhoneAlt} />+880-188 200 126</p>

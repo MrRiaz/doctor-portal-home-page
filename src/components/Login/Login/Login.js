@@ -6,6 +6,7 @@ import firebaseConfig from './firebaseConfig';
 import { UserContext } from '../../../App';
 import { useHistory, useLocation } from 'react-router-dom';
 import './Login.css';
+import { handleGoogleSignIn, initializeLoginFramework } from './LoginManager';
 
 firebase.initializeApp(firebaseConfig);
 
@@ -16,31 +17,48 @@ const Login = () => {
 
     let { from } = location.state || { from: { pathname: "/" } };
 
-    const handleGoogleSignIn = () => {
-        const provider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth().signInWithPopup(provider)
+    // const handleGoogleSignIn = () => {
+    //     const provider = new firebase.auth.GoogleAuthProvider();
+    //     firebase.auth().signInWithPopup(provider)
+    //         .then(res => {
+    //             const { displayName, email } = res.user;
+    //             const signedInuser = { name: displayName, email };
+    //             setLoggedInUser(signedInuser);
+    //             setUserToken();
+    //         })
+    //         .catch(error => {
+    //             var errorMessage = error.message;
+    //             console.log(errorMessage);
+    //         });
+    // }
+
+    const [setUser] = useContext(UserContext);
+    initializeLoginFramework();
+    const googleSignIn = () => {
+        handleGoogleSignIn()
             .then(res => {
-                const { displayName, email } = res.user;
-                const signedInuser = { name: displayName, email };
-                setLoggedInUser(signedInuser);
-                setUserToken();
+                handleResponse(res, true)
             })
-            .catch(error => {
-                var errorMessage = error.message;
-                console.log(errorMessage);
-            });
     }
 
-    const setUserToken = () => {
-        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
-            .then(function (idToken) {
-                sessionStorage.setItem('token', idToken);
-                history.replace(from);
-            })
-            .catch(function (error) {
-                // Handle error
-            });
+    const handleResponse = (res, redirect) => {
+        setUser(res)
+        setLoggedInUser(res);
+        history.replace(from);
+        if (redirect) {
+        }
     }
+
+    // const setUserToken = () => {
+    //     firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
+    //         .then(function (idToken) {
+    //             sessionStorage.setItem('token', idToken);
+    //             history.replace(from);
+    //         })
+    //         .catch(function (error) {
+    //             // Handle error
+    //         });
+    // }
 
     return (
         <section className="container-fluid">
@@ -57,7 +75,7 @@ const Login = () => {
                         <input type="password" class="form-control" id="exampleInputPassword1" />
                     </div>
                     <div className="form-group mt-4">
-                        <button onClick={handleGoogleSignIn} className="btn form-control">Continue with Google</button>
+                        <button onClick={googleSignIn} className="btn form-control">Continue with Google</button>
                     </div>
                 </div>
                 <div className="col-md-6 pt-5 d-flex justify-content-end">

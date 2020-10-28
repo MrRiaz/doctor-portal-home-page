@@ -13,14 +13,37 @@ import PrivateRoute from './components/Login/PrivateRoute/PrivateRoute';
 import NoMatch from './components/Home/NoMatch/NoMatch';
 import AllPatients from './components/AllPatients/AllPatients/AllPatients';
 import AddDoctor from './components/AddDoctor/AddDoctor/AddDoctor';
+import { useEffect } from 'react';
+import { initializeLoginFramework, userLogin } from './components/Login/Login/LoginManager';
 
 export const UserContext = createContext();
 
 
 function App() {
+  initializeLoginFramework();
+
+  useEffect(() => {
+    const login = userLogin (function (cv) {
+
+      const signedInUser = {
+        isSignedIn: true,
+        name: cv.displayName,
+        email: cv.email,
+        success: true
+      };
+      setLoggedInUser(signedInUser);
+    });
+  }, [])
+
+  const [user, setUser] = useState({
+    isSignedIn: false,
+    name: '',
+    email: ''
+  });
+
   const [loggedInUser, setLoggedInUser] = useState({});
   return (
-    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser, user, setUser]}>
       <Router>
         <Switch>
           <Route path="/home">

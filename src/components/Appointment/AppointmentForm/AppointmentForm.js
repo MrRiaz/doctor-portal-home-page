@@ -23,12 +23,11 @@ const AppointmentForm = ({ modalIsOpen, closeModal, appointmentOn, date }) => {
     const { register, handleSubmit, errors } = useForm();
     
     const onSubmit = data => {
-        // const adding = {...loggedInUser, ...data};
         data.service = appointmentOn;
         data.date = date;
         data.created = new Date();
 
-        fetch('http://localhost:5000/addAppointment', {
+        fetch('https://frozen-spire-66632.herokuapp.com/addAppointment', {
             method: 'POST',
             headers: {'content-Type': 'application/json' },
             body: JSON.stringify(data)

@@ -8,7 +8,7 @@ const AllPatients = () => {
     const [patients, setPatients] = useState([]);
 
     useEffect(() => {
-        // fetch('http://localhost:5000/allPatients?email='+loggedInUser.email, {
+        // fetch('https://frozen-spire-66632.herokuapp.com/allPatients?email='+loggedInUser.email, {
         //     method: 'GET',
         //     headers: { 
         //         'content-type' : 'application/json', 
@@ -16,7 +16,7 @@ const AllPatients = () => {
         //     }
         // })
 
-        fetch('http://localhost:5000/allPatients')
+        fetch('https://frozen-spire-66632.herokuapp.com/allPatients')
         .then(res => res.json())
         .then(data => {
             setPatients(data);
